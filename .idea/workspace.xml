@@ -8,10 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/API/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/API/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/Auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Contacts/Contacts.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/Contacts.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Redux/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -23,6 +22,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -60,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646949424607</updated>
-      <workItem from="1646949425788" duration="46607000" />
+      <workItem from="1646949425788" duration="52709000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1646950283891</created>

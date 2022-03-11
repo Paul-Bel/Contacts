@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import style from "./Contacts.module.css"
-import {DataType, deleteContactsAC, deleteContactsTC} from "../../Redux/reducer";
+import {DataType, deleteContactsAC, deleteContactsTC, editContactsTC} from "../../Redux/reducer";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
@@ -10,14 +10,19 @@ import {useDispatch} from "react-redux";
 export const Contact = (props: DataType) => {
     const {id, name, city, phone, email, photo} = props
     const dispatch = useDispatch()
-    let text = <div>"'На странице со списком контактов должна быть возможность:<p/>
-        удалять <p/>
-        редактировать <p/>
+    let text = <div>редактировать <p/>
         наличие функции поиска.'"</div>
     const [forDelete, setForDlete] = useState(true)
+    const [editData, setEditData] =useState<DataType>({id, name, city, phone, email, photo})
+    const [editMode, setEditMode] =useState({id: false, name: false, city: false, phone: false, email: false, photo: false})
     const deleteContact = () => {
         dispatch(deleteContactsTC(id))
     }
+    const editDataContactHandler = () => {
+        setEditMode({id: false, name: false, city: false, phone: false, email: false, photo: false})
+        dispatch(editContactsTC(editData))
+    }
+
     return (
         <div className={style.container}>
             <div className={style.delete} >
@@ -32,20 +37,38 @@ export const Contact = (props: DataType) => {
             <div className={style.photo} style={{backgroundImage: `url(${photo})`}}></div>
             <div className={style.infoContact}>
                 <div className={style.dataContainer}></div>
-                <h4>Contact</h4>
+                <h4 style={{margin: '0'}}>Contact</h4>
                 <div className={style.data}>
                     <span className={style.infoName}>Name</span>
-                    <span className={style.info}>`{name}`</span><span>✍</span>
+                    {!editMode.name ? <><span className={style.info}>`{name}`</span><span onClick={()=>setEditMode({...editMode, name: !editMode.name})} style={{cursor:'pointer'}}>✍</span></>
+                    :<><input value={editData.name} className={style.input}
+                              onChange={(e)=>setEditData({...editData, name: e.currentTarget.value})}/>
+                            <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
                 </div>
-                <div className={style.data}><span>City</span><span className={style.info}>{city}</span>✍</div>
-                <div className={style.data}><span>Phone</span><span className={style.info}>{phone}</span>✍</div>
-                <div className={style.data}><span>Email</span><span className={style.info}>{email}</span>✍
+                <div className={style.data}>
+                    <span className={style.infoName}>City</span>
+                    {!editMode.city ? <><span className={style.info}>{city}</span><span onClick={()=>setEditMode({...editMode, city: !editMode.city})} style={{cursor:'pointer'}}>✍</span></>
+                        : <><input value={editData.city} className={style.input}
+                                   onChange={(e)=>setEditData({...editData, email: e.currentTarget.value})}/>
+                            <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
+                </div>
+                <div className={style.data}>
+                    <span className={style.infoName}>Phone</span>
+                    {!editMode.phone ? <><span className={style.info}>{phone}</span><span onClick={()=>setEditMode({...editMode, phone: !editMode.phone})} style={{cursor:'pointer'}}>✍</span></>
+                        : <><input value={editData.phone} className={style.input}
+                                   onChange={(e)=>setEditData({...editData, phone: isFinite(+e.currentTarget.value)?+e.currentTarget.value:editData.phone})}/>
+                            <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
+                </div>
+                <div className={style.data}>
+                    <span className={style.infoName}>Email</span>
+                    {!editMode.email ? <><span className={style.info}>{email}</span><span onClick={()=>setEditMode({...editMode, email: !editMode.email})} style={{cursor:'pointer'}}>✍</span></>
+                    : <><input value={editData.email} className={style.input}
+                             onChange={(e)=>setEditData({...editData, email: e.currentTarget.value})}/>
+                            <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
+
                 </div>
             </div>
         </div>
     )
 }
 
-function useConfirm(): { confirm: any; } {
-    throw new Error("Function not implemented.");
-}

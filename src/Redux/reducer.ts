@@ -24,7 +24,8 @@ export const reducer = (state: InitialStateType = initialState, action: ActionsT
             return {...state, contacts: [...state.contacts, action.contacts], successCreate: action.successCreate};
               case 'DELETE_CONTACT':
             return {...state, contacts: state.contacts.filter(us => us.id !==action.id)};
-
+     case 'EDIT_CONTACT':
+            return {...state, contacts: state.contacts.map(us => us.id === action.contacts.id ? action.contacts : us)};
         default:
             return state
     }
@@ -37,6 +38,7 @@ export const authMeAC = (isLoggedIn: AuthType) => ({type: 'AUTH_ME', isLoggedIn}
 export const preloadAC = (load: boolean) => ({type: 'PRELOAD', load} as const)
 export const setContactsAC = (users: DataType[]) => ({type: 'SET_CONTACTS', contacts: users, successCreate: false} as const)
 export const createContactsAC = (users: DataType) => ({type: 'CREATE_CONTACT', contacts: users, successCreate: true} as const)
+export const editContactsAC = (users: DataType) => ({type: 'EDIT_CONTACT', contacts: users} as const)
 export const deleteContactsAC = (id: number|string) => ({type: 'DELETE_CONTACT', id} as const)
 
 // // thunks
@@ -44,8 +46,7 @@ export const loginTC = (email: string, password: string) => (dispatch: Dispatch<
     dispatch(preloadAC(true))
     contactsAPI.authMe()
         .then(res => {
-            debugger
-              if (res.data.status ===200 && res.data[0].email === email || res.data[0].password === password) {
+              if (res.status ===200 && res.data[0].email === email && res.data[0].password === password) {
                 dispatch(authMeAC('success'))
             } else{dispatch(authMeAC('invalid credentials'))}
         })
@@ -77,18 +78,18 @@ export const createContactsTC = (newUser: DataType) => (dispatch: Dispatch<Actio
             alert('try later')
         }).finally(()=>dispatch(preloadAC(false)))
 }
-// export const editContactsTC = (id: number|string) => (dispatch: Dispatch<ActionsType>) => {
-//     dispatch(preloadAC(true))
-//     contactsAPI.(newUser)
-//         .then(res => {
-//             if (res.status === 201) {
-//                 dispatch(createContactsAC(res.data))
-//             }
-//         })
-//         .catch((error) => {
-//             alert('try later')
-//         }).finally(()=>dispatch(preloadAC(false)))
-// }
+export const editContactsTC = (editUser: DataType) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(preloadAC(true))
+    contactsAPI.editContacts(editUser)
+        .then(res => {
+            if (res.status === 200) {
+                dispatch(editContactsAC(editUser))
+            }
+        })
+        .catch((error) => {
+            alert('try later')
+        }).finally(()=>dispatch(preloadAC(false)))
+}
 export const deleteContactsTC = (id: number|string) => (dispatch: Dispatch<ActionsType>) => {
     dispatch(preloadAC(true))
     contactsAPI.deleteContacts(id)
@@ -105,7 +106,7 @@ export const deleteContactsTC = (id: number|string) => (dispatch: Dispatch<Actio
 
 type ActionsType = ReturnType<typeof setIsLoggedInAC> | ReturnType<typeof logoutAC>
     | ReturnType<typeof authMeAC> | ReturnType<typeof preloadAC> | ReturnType<typeof setContactsAC>
-    | ReturnType<typeof createContactsAC> | ReturnType<typeof deleteContactsAC>
+    | ReturnType<typeof createContactsAC> | ReturnType<typeof deleteContactsAC> | ReturnType<typeof editContactsAC>
 
 export type DataType = {
     id: number | string,

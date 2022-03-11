@@ -40,6 +40,7 @@ export const Addcontact = () => {
     if(isLoggedIn !== "success"){return <Navigate to={'/login'}/>}
     return (
         <div className={style.addContactContainer}>
+            <h3>Create new contact</h3>
             <div className={style.addStrings}> {!!newContact.name ?  "Enter name"  : error}
             <TextField id="outlined-basic" label="*name" variant="outlined"
                        error={!newContact.name}

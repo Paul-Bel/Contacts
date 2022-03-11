@@ -16,8 +16,8 @@ export const contactsAPI = {
     createContacts(newUser: DataType) {
         return instance.post(`users`, {...newUser})
     },
-     editContacts(id: string|number, newUser: DataType) {
-        return instance.put(`users/${id}`, {...newUser})
+     editContacts(user: DataType) {
+        return instance.put(`users/${user.id}`, {...user})
     },
     deleteContacts(id: string | number) {
         return instance.delete(`users/${id}`)
