@@ -1,13 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Auth} from "./Components/Auth/Auth";
+import {BrowserRouter} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+import {ContactContainer} from "./Components/Contacts/ContactContainer";
+import {Provider, useSelector} from "react-redux";
+import {Navbar} from "./Components/Navbar/Navbar";
+import {Addcontact} from "./Components/AddContact/Addcontact";
+import {LinearProgress} from "@mui/material";
+import {AppRootStateType} from "./Redux/store";
+import {ErrorSnackbar} from "./common/Error";
 
 function App() {
-  return (
-    <div className="App">
-Test
-    </div>
-  );
+    const preLoader = useSelector<AppRootStateType, boolean>(store => store.data.load)
+
+    return (
+
+        <BrowserRouter>
+            <Navbar/>
+            {preLoader && <LinearProgress/>}
+            <div className="App">
+                <Routes>
+                    <Route path={'/contacts'} element={<ContactContainer/>}/>
+                    <Route path={'/add_contact'} element={<Addcontact/>}/>
+                    <Route path={'/login'} element={<Auth/>}/>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

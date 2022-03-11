@@ -1,0 +1,10 @@
+.auth {
+    margin: 10% auto;
+    display: flex;
+
+
+    border: 1px solid #282c34;
+    border-radius: 5px;
+    width: 400px;
+    padding: 5px 0;
+}

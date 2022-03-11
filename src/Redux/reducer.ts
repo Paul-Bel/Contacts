@@ -1,0 +1,94 @@
+import {Dispatch} from 'redux'
+import {contactsAPI} from "../API/api";
+
+const initialState: InitialStateType = {
+    isLoggedIn: false,
+    load: false,
+    contacts: [],
+}
+
+export const reducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+    switch (action.type) {
+        case 'login/SET-IS-LOGGED-IN':
+            return {...state, isLoggedIn: action.value};
+        case 'LOGOUT_USER' :
+            return {...state, contacts: [], isLoggedIn: false};
+        case 'AUTH_ME':
+            return {...state, isLoggedIn: true};
+             case 'PRELOAD':
+            return {...state, load: action.load};
+        case 'SET_CONTACTS':
+            return {...state, contacts: action.contacts};
+              case 'CREATE_USER':
+            return {...state, contacts: [...state.contacts, action.contacts]};
+
+        default:
+            return state
+    }
+}
+
+export const setIsLoggedInAC = (value: boolean) =>
+    ({type: 'login/SET-IS-LOGGED-IN', value} as const)
+export const logoutAC = () => ({type: 'LOGOUT_USER'} as const)
+export const authMeAC = () => ({type: 'AUTH_ME'} as const)
+export const preloadAC = (load: boolean) => ({type: 'PRELOAD', load} as const)
+export const setContactsAC = (users: DataType[]) => ({type: 'SET_CONTACTS', contacts: users} as const)
+export const createContactsAC = (users: DataType) => ({type: 'CREATE_USER', contacts: users} as const)
+// // thunks
+export const loginTC = (email: string, password: string) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(preloadAC(true))
+    contactsAPI.authMe()
+        .then(res => {
+              if (res.data.status ===200 && res.data[0].email === email || res.data[0].password === password) {
+                dispatch(authMeAC())
+            }
+        })
+        .catch((error) => {
+                alert('try later')
+        }).finally(()=>dispatch(preloadAC(false)))
+}
+export const setContactsTC = () => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(preloadAC(true))
+    contactsAPI.getContacts()
+        .then(res => {
+            if (res.status ===200) {
+                dispatch(setContactsAC(res.data))
+            }
+        })
+        .catch((error) => {
+            alert('try later')
+        }).finally(()=>dispatch(preloadAC(false)))
+}
+export const createContactsTC = (newUser: DataType) => (dispatch: Dispatch<ActionsType>) => {
+    dispatch(preloadAC(true))
+    contactsAPI.createContacts(newUser)
+        .then(res => {
+            if (res.status ===201) {
+                dispatch(createContactsAC(res.data))
+            }
+        })
+        .catch((error) => {
+            alert('try later')
+        }).finally(()=>dispatch(preloadAC(false)))
+}
+
+
+type ActionsType = ReturnType<typeof setIsLoggedInAC> | ReturnType<typeof logoutAC>
+    | ReturnType<typeof authMeAC> | ReturnType<typeof preloadAC> | ReturnType<typeof setContactsAC>
+    | ReturnType<typeof createContactsAC>
+
+export type DataType = {
+    id: number | string,
+    name: string,
+    city: string,
+    phone: number | string,
+    email: string
+    photo: string
+}
+type InitialStateType = {
+    isLoggedIn: boolean
+    load: boolean
+    contacts: Array<DataType>
+}
+//
+// // type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>
