@@ -6,17 +6,21 @@ import {Stack} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import {v1} from "uuid";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/store";
-import {createContactsTC, DataType} from "../../Redux/reducer";
+import {AuthType, createContactsTC, DataType} from "../../Redux/reducer";
+import {Contact} from "../Contacts/Contact";
 
 
 export const Addcontact = () => {
     const dispatch = useDispatch()
+    const lastContact = useSelector<AppRootStateType, DataType>(store => store.data.contacts[store.data.contacts.length - 1])
     const resrt = {name: " ", city: "", phone: " ", email: "", photo: ""}
     const error = <span style={{color: 'red'}}>Fill in the field</span>
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.data.isLoggedIn)
+    const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
+    const successCreate = useSelector<AppRootStateType, boolean>(state => state.data.successCreate)
+    const load = useSelector<AppRootStateType, boolean>(state => state.data.load)
     const [newContact, setNewContact] = useState<DataType>({id: v1(), ...resrt})
 
     const sendHandler = () => {
@@ -31,8 +35,9 @@ export const Addcontact = () => {
         }
         dispatch(createContactsTC(newContact))
         setNewContact({id: v1(),...resrt})
+
     }
-    if(!isLoggedIn){return <Navigate to={'/login'}/>}
+    if(isLoggedIn !== "success"){return <Navigate to={'/login'}/>}
     return (
         <div className={style.addContactContainer}>
             <div className={style.addStrings}> {!!newContact.name ?  "Enter name"  : error}
@@ -61,15 +66,19 @@ export const Addcontact = () => {
                        onChange={(e)=>setNewContact({...newContact, photo: e.currentTarget.value})}/>
             </div>
             <Stack direction="row" spacing={5} justifyContent={"center"}>
-                <Button variant="outlined" color={'error'} startIcon={<DeleteIcon/>} onClick={()=>(setNewContact({id: v1(),...resrt}))}>
+                <Button variant="outlined" color={'error'} startIcon={<DeleteIcon/>}
+                        onClick={()=>(setNewContact({id: v1(),...resrt}))} disabled={load}>
                     Cleande
                 </Button>
                 <Button variant="contained" endIcon={<SendIcon/>} onClick={sendHandler}
-                onBlur={sendHandler}>
+                onBlur={sendHandler} disabled={load}>
                     Send
                 </Button>
             </Stack>
 
+
+            {successCreate && <><h4 style={{color: "green"}}>Contact created</h4> <Contact id={lastContact.id} name={lastContact.name} city={lastContact.city}
+                      phone={lastContact.phone} email={lastContact.email} photo={lastContact.photo}/></>}
         </div>
 
     )

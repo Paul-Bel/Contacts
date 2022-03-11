@@ -4,14 +4,14 @@ import {useFormik} from "formik";
 import style from "./auth.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from 'react-router-dom'
-import {loginTC} from "../../Redux/reducer";
+import {AuthType, loginTC} from "../../Redux/reducer";
 import {AppRootStateType} from "../../Redux/store";
 
 
 export const Auth = () => {
     const dispatch = useDispatch()
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.data.isLoggedIn)
-
+    const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
+    const load = useSelector<AppRootStateType, boolean>(state => state.data.load)
     const formik = useFormik({
         validate: (values) => {
             if (!values.email) {
@@ -30,11 +30,10 @@ export const Auth = () => {
             password: '',
         },
         onSubmit: values => {
-            console.log('Value: ', values)
             dispatch(loginTC(values.email, values.password));
         },
     })
-    if(isLoggedIn){return <Navigate to={'/contacts'}/>}
+    if(isLoggedIn === 'success'){return <Navigate to={'/contacts'}/>}
 
     return (
         <div className={style.state}>
@@ -67,12 +66,13 @@ export const Auth = () => {
                                     {...formik.getFieldProps("password")}
                                 />
                                 {formik.errors.password ? <div>{formik.errors.password}</div> : null}
-                                <Button type={'submit'} variant={'contained'} color={'primary'}>Login</Button>
+                                <Button type={'submit'} variant={'contained'} color={'primary'} disabled={load}>Login</Button>
                             </FormGroup>
                         </FormControl>
                     </form>
                 </Grid>
             </Grid>
+            {isLoggedIn === 'invalid credentials' && <h3 style={{color: "red", marginRight: "90px"}}>wrong username or password, please try again</h3>}
         </div>
     );
 }
