@@ -35,7 +35,7 @@ export const Addcontact = () => {
     }, [])
     const sendHandler = () => {
         if (!newContact.name.trim()) {
-            setNewContact({...newContact, name: ''})
+            setNewContact({...newContact, name: '', phone: ''})
             return
         }
         let validatePhone = newContact.phone.toString()
@@ -51,7 +51,7 @@ export const Addcontact = () => {
         <div className={style.addContactContainer}>
             <div className={style.header}>
                 <h3>Create new contact</h3>
-                <div className={style.addStrings}> {!!newContact.name ? "Enter name" : error}
+                <div className={style.addStrings}> {!!newContact.name ? "*Enter name" : error}
                     <TextField id="outlined-basic" label="*name" variant="outlined"
                                error={!newContact.name}
                                value={newContact.name}
@@ -62,7 +62,7 @@ export const Addcontact = () => {
                                value={newContact.city}
                                onChange={(e) => setNewContact({...newContact, city: e.currentTarget.value})}/>
                 </div>
-                <div className={style.addStrings}> {!!newContact.phone ? "Enter phone" : error}
+                <div className={style.addStrings}> {!!newContact.phone ? "*Enter phone" : error}
                     <TextField id="outlined-basic" label="*(960)xxxxxxx" variant="outlined"
                                value={newContact.phone} error={!newContact.phone}
                                onChange={(e) => setNewContact({
@@ -85,7 +85,7 @@ export const Addcontact = () => {
                         Clean
                     </Button>
                     <Button variant="contained" endIcon={<SendIcon/>} onClick={sendHandler}
-                            onBlur={sendHandler} disabled={load}>
+                            onBlur={sendHandler} disabled={load || (!newContact.name || !newContact.phone)}>
                         Send
                     </Button>
                 </Stack>

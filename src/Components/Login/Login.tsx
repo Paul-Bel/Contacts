@@ -44,7 +44,7 @@ export const Login = () => {
                   justifyContent="center">
                 <Grid item xs={5}>
                     <form onSubmit={formik.handleSubmit}>
-                        <FormControl style={{width: '300px', left: '-60px'}}>
+                        <FormControl style={{width: '300px', left: '-60px', textAlign: 'left'}}>
                             <FormLabel>
                                 <p>
                                     Test account credentials:
@@ -54,6 +54,8 @@ export const Login = () => {
                                 <p>
                                     Password: testcaseP654
                                 </p>
+                                <h4 className={style.error}>
+                                    {isLoggedIn === 'invalid credentials' && 'wrong username or password, please try again'}</h4>
                             </FormLabel>
                             <FormGroup>
                                 <TextField
@@ -75,7 +77,7 @@ export const Login = () => {
                     </form>
                 </Grid>
             </Grid>
-            {isLoggedIn === 'invalid credentials' && <h3 style={{color: "red", marginRight: "90px"}}>wrong username or password, please try again</h3>}
+
         </div>
     );
 }

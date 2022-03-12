@@ -1,5 +1,5 @@
 .state{
-    padding: 25% 0;
+    padding: 5% 0;
 }
 .auth {
     margin: 25% auto;
@@ -8,4 +8,11 @@
     border-radius: 5px;
     width: 400px;
     padding: 5px 0;
+}
+.error {
+    color: red;
+    height: 50px;
+    width: 280px;
+    margin: 0 auto;
+    text-align: left;
 }

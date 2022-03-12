@@ -51,7 +51,9 @@ export const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
+    if(isLoggedIn !== 'success'){
+    return <></>
+    }
     return (
         <AppBar position="fixed" color={'secondary'}>
             <Container maxWidth="xl">

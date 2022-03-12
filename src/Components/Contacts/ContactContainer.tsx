@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Contact} from "./Contact";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/store";
@@ -33,13 +33,14 @@ export const ContactContainer = () => {
 
     return (
         <div className={style.contactModule}>
-                        <div style={{marginTop: '10px', width: '100%'}}>
+            <div style={{marginTop: '10px', width: '100%'}}>
                 <TextField id="outlined-basic" label="type name" variant="outlined"
                            error={false}
                            value={findContactName}
                            onChange={(e) =>
                                setFindContactName(e.currentTarget.value)}/>
                 <Button style={{marginLeft: '10px', height: '56px'}}
+                        disabled={!findContactName}
                         variant="outlined" startIcon={<DeleteIcon/>}
                         onClick={() => setFindContactName('')}>
                     clean

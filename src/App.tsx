@@ -14,7 +14,7 @@ function App() {
 
     return (
         <HashRouter>
-            <Navbar/>
+            {<Navbar/>}
             {preLoader && <LinearProgress/>}
             <div className="App">
                 <Routes>
