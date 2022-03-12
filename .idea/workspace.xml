@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7de0fb-c621-4c2d-844a-f8a208a4b45a" name="Changes" comment="added edit profile">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/API/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/API/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/auth.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Login/Login.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" afterDir="false" />
@@ -44,14 +44,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../SocialNetworkPrototype" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../data-server/data-server" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="ts.external.directory.path" value="D:\Projects\TestsCese\Takeoff_Staff\Contacts-Front\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Projects\TestsCese\Takeoff_Staff\demo\Contacts\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -68,6 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1646949424607</updated>
       <workItem from="1646949425788" duration="57135000" />
+      <workItem from="1647069833839" duration="6010000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1646950283891</created>

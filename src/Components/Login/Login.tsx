@@ -1,17 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from "@mui/material";
 import {useFormik} from "formik";
-import style from "./auth.module.css"
+import style from "./Login.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from 'react-router-dom'
 import {AuthType, loginTC} from "../../Redux/reducer";
 import {AppRootStateType} from "../../Redux/store";
 
 
-export const Auth = () => {
+export const Login = () => {
+
     const dispatch = useDispatch()
     const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
     const load = useSelector<AppRootStateType, boolean>(state => state.data.load)
+    let auth = 'false'
+
     const formik = useFormik({
         validate: (values) => {
             if (!values.email) {
