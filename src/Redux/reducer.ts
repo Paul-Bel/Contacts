@@ -51,33 +51,25 @@ export const findContactsAC = (name: string) => ({type: 'Find_CONTACT', name} as
 
 // // thunks
 export const loginTC = (email: string, password: string) => (dispatch: Dispatch<ActionsType>) => {
-    // debugger
-    // let checkAuth = sessionStorage.getItem('auth')
-    // checkAuth && JSON.parse(checkAuth) === 'true' ? dispatch(authMeAC('success')) :
-        dispatch(preloadAC(true))
-        contactsAPI.authMe()
-            .then(res => {
+    dispatch(preloadAC(true))
+    contactsAPI.authMe()
+        .then(res => {
 
-                if (res.status === 200 && res.data[0].email === email && res.data[0].password === password) {
-                    dispatch(authMeAC('success'))
-                } else {
-                    dispatch(authMeAC('invalid credentials'))
-                }
-            })
-            .catch((error) => {
-                alert('try later')
-            }).finally(() => dispatch(preloadAC(false)))
+            if (res.status === 200 && res.data[0].email === email && res.data[0].password === password) {
+                dispatch(authMeAC('success'))
+            } else {
+                dispatch(authMeAC('invalid credentials'))
+            }
+        })
+        .catch((error) => {
+            alert('try later')
+        }).finally(() => dispatch(preloadAC(false)))
 }
 
 export const setContactsTC = () => (dispatch: Dispatch<ActionsType>) => {
     dispatch(preloadAC(true))
     contactsAPI.getContacts()
         .then(res => {
-            res.data.map((d: any, id:number) => {
-                console.log(Object.keys(d)[id])
-                console.log(Object.values(d)[id])
-            })
-
             if (res.status === 200) {
                 dispatch(setContactsAC(res.data))
             }

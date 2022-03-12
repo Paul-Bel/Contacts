@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {MouseEvent, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -21,34 +21,39 @@ import {Alert} from "@mui/material";
 let pages = ['Contacts', 'Add_Contact'];
 let settings = ['Logout'];
 
+class ChangeEvent<T> {
+}
+
 export const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElNav, setAnchorElNav] = useState<null|HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
-
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const handleOpenNavMenu = (event: any) => {
+    const handleOpenNavMenu = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event: any) => {
-        setAnchorElUser(event.currentTarget);
+    const handleOpenUserMenu = (event: MouseEvent<HTMLButtonElement>) => {
+        sessionStorage.setItem('auth', JSON.stringify(false))
+        dispatch(logoutAC());
+        navigate('/login')
+        // setAnchorElUser(event.currentTarget);
     };
     const handleCloseNavMenu = (page: string) => {
         setAnchorElNav(null);
         if (page) {
-            navigate(`/${page.toLocaleLowerCase()}`)
+            let nav = page.toLocaleLowerCase()
+            navigate(`/${nav}`)
         }
     };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-        dispatch(logoutAC())
     };
 
     return (
-        <AppBar position="static" color={'secondary'}>
+        <AppBar position="fixed" color={'secondary'}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography

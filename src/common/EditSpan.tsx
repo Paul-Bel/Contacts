@@ -19,12 +19,13 @@ export const EditSpan = (props: EditSpanPropsType) => {
         <div className={style.data}>
             <span className={style.infoName}>{props.name}</span>
             {!editMode ? <><span className={style.info}>{props.value}</span>
-            <span
-                onClick={() => setEditMode(!editMode)}
-                    style={{cursor: 'pointer'}}>✍</span></>
+                    <span
+                        onClick={() => setEditMode(!editMode)}
+                        className={style.icon}>✍</span></>
                 : <><input value={props.value} className={style.input}
-                onChange={(e) => props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())}/>
-                <span onClick={onCkickGange} style={{cursor: 'pointer'}}>✅</span></>}
+                           onChange={(e) =>
+                               props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())}/>
+                    <span onClick={onCkickGange} className={style.icon}>✅</span></>}
         </div>
 
     )
