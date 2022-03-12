@@ -60,7 +60,7 @@ export const Addcontact = () => {
                            value={newContact.phone} error={!newContact.phone}
                            onChange={(e) => setNewContact({
                                ...newContact,
-                               phone: isFinite(+e.currentTarget.value) ? +e.currentTarget.value : newContact.phone
+                               phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
                            })}/>
             </div>
             <div className={style.addStrings}> Enter email

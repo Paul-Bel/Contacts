@@ -133,7 +133,7 @@ export type DataType = {
     id: string,
     name: string,
     city: string,
-    phone: string | number,
+    phone: string,
     email: string
     photo: string
 }

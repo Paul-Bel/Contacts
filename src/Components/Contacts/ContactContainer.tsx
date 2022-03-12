@@ -3,7 +3,7 @@ import {Contact} from "./Contact";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Redux/store";
 import {AuthType, DataType, setContactsTC} from "../../Redux/reducer";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import style from './Contacts.module.css'
 import TextField from "@mui/material/TextField/TextField";
 import Button from "@mui/material/Button/Button";
@@ -12,22 +12,25 @@ import DeleteIcon from "@mui/icons-material/Delete";
 export const ContactContainer = () => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const state = useSelector<AppRootStateType, Array<DataType>>(state => state.data.contacts)
     const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
     const [findContactName, setFindContactName] = useState('')
     useEffect(() => {
-        if (!isLoggedIn) return
+        if (isLoggedIn !== "success") {
+            navigate('/login')
+        }
         dispatch(setContactsTC())
         // if(isLoggedIn === 'success') {
         //     sessionStorage.setItem('auth', JSON.stringify(true))
         // }
     }, [])
+    console.log('Test Streeng', 'R'==='R')
+    // if (isLoggedIn !== "success") {
+    //     return <Navigate to={'/login'}/>
+    // }
 
-    if (isLoggedIn !== "success") {
-        return <Navigate to={'/login'}/>
-    }
-
-    const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName))
+    const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName.toLowerCase()))
 
     return (
         <div className={style.contactModule}>
@@ -41,14 +44,13 @@ export const ContactContainer = () => {
                     clean
                 </Button>
             </div>
-            {contacts.map(us => <Contact
-                key={us.id}
-                id={us.id}
-                name={us.name}
-                city={us.city}
-                phone={us.phone}
-                email={us.email}
-                photo={us.photo}
+            {/*console.log(Object.keys(d)[id])*/}
+            {/*console.log(Object.values(d)[id])*/}
+            {contacts.map((us, i) => <Contact
+                key={us.id} id={us.id} name={us.name} city={us.city}
+                phone={us.phone} email={us.email} photo={us.photo}
+                // nameTitle={Object.keys(us)[i]} cityTitle={Object.keys(us)[i]}
+                // phoneTitle={Object.keys(us)[i]} emailTitle={Object.keys(us)[i]}
             />)}
         </div>
     )
