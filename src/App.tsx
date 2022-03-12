@@ -13,7 +13,6 @@ function App() {
     const preLoader = useSelector<AppRootStateType, boolean>(store => store.data.load)
 
     return (
-
         <BrowserRouter>
             <Navbar/>
             {preLoader && <LinearProgress/>}

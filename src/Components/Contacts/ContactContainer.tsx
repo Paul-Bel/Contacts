@@ -27,10 +27,8 @@ export const ContactContainer = () => {
         return <Navigate to={'/login'}/>
     }
 
-    let contacts = state
-    if (findContactName !== '') {
-        contacts = state.filter(us => us.name.toLowerCase().includes(findContactName))
-    }
+    const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName))
+
     return (
         <div className={style.contactModule}>
             <div style={{marginTop: '10px', width: '100%'}}>
