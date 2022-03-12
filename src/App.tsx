@@ -21,8 +21,9 @@ function App() {
             {preLoader && <LinearProgress/>}
             <div className="App">
                 <Routes>
-                    <Route path={'/contacts'} element={<ContactContainer/>}/>
-                    <Route path={'/add_contact'} element={<Addcontact/>}/>
+                    <Route path={'/'} element={<ContactContainer/>}/>
+                    <Route path={'/Contacts'} element={<ContactContainer/>}/>
+                    <Route path={'/Add_Contact'} element={<Addcontact/>}/>
                     <Route path={'/login'} element={<Auth/>}/>
                 </Routes>
             </div>

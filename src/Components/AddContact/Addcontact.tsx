@@ -69,7 +69,7 @@ export const Addcontact = () => {
             <Stack direction="row" spacing={5} justifyContent={"center"}>
                 <Button variant="outlined" color={'error'} startIcon={<DeleteIcon/>}
                         onClick={()=>(setNewContact({id: v1(),...resrt}))} disabled={load}>
-                    Cleande
+                    Clean
                 </Button>
                 <Button variant="contained" endIcon={<SendIcon/>} onClick={sendHandler}
                 onBlur={sendHandler} disabled={load}>

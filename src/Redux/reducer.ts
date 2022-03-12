@@ -26,7 +26,10 @@ export const reducer = (state: InitialStateType = initialState, action: ActionsT
             return {...state, contacts: state.contacts.filter(us => us.id !==action.id)};
      case 'EDIT_CONTACT':
             return {...state, contacts: state.contacts.map(us => us.id === action.contacts.id ? action.contacts : us)};
-        default:
+             case 'Find_CONTACT':
+            return {...state, contacts: state.contacts.filter(us => us.name.includes(action.name))};
+
+            default:
             return state
     }
 }
@@ -40,6 +43,7 @@ export const setContactsAC = (users: DataType[]) => ({type: 'SET_CONTACTS', cont
 export const createContactsAC = (users: DataType) => ({type: 'CREATE_CONTACT', contacts: users, successCreate: true} as const)
 export const editContactsAC = (users: DataType) => ({type: 'EDIT_CONTACT', contacts: users} as const)
 export const deleteContactsAC = (id: number|string) => ({type: 'DELETE_CONTACT', id} as const)
+export const findContactsAC = (name: string) => ({type: 'Find_CONTACT', name} as const)
 
 // // thunks
 export const loginTC = (email: string, password: string) => (dispatch: Dispatch<ActionsType>) => {
@@ -106,7 +110,8 @@ export const deleteContactsTC = (id: number|string) => (dispatch: Dispatch<Actio
 
 type ActionsType = ReturnType<typeof setIsLoggedInAC> | ReturnType<typeof logoutAC>
     | ReturnType<typeof authMeAC> | ReturnType<typeof preloadAC> | ReturnType<typeof setContactsAC>
-    | ReturnType<typeof createContactsAC> | ReturnType<typeof deleteContactsAC> | ReturnType<typeof editContactsAC>
+    | ReturnType<typeof createContactsAC> | ReturnType<typeof deleteContactsAC>
+    | ReturnType<typeof editContactsAC> | ReturnType<typeof findContactsAC>
 
 export type DataType = {
     id: number | string,

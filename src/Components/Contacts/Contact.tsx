@@ -5,6 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
 import {useDispatch} from "react-redux";
+import TextField from "@mui/material/TextField/TextField";
 
 
 export const Contact = (props: DataType) => {
@@ -25,6 +26,7 @@ export const Contact = (props: DataType) => {
 
     return (
         <div className={style.container}>
+
             <div className={style.delete} >
                 {forDelete
                     ? <span onClick={()=>setForDlete(false)}><DeleteForeverIcon fontSize="large" color={"primary"}/></span>
@@ -34,9 +36,13 @@ export const Contact = (props: DataType) => {
 
             </div>
 
-            <div className={style.photo} style={{backgroundImage: `url(${photo})`}}></div>
+            {!editMode.photo ? <div className={style.photo} style={{backgroundImage: `url(${photo})`}}
+                                    onDoubleClick={()=>setEditMode({...editMode, photo: !editMode.photo})}/>
+            : <><input value={editData.photo} style={{width:"80px"}} autoFocus={true}
+                       onChange={(e)=>setEditData({...editData, photo: e.currentTarget.value})}/>
+                    <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
             <div className={style.infoContact}>
-                <div className={style.dataContainer}></div>
+                {/*<div className={style.dataContainer}> </div>*/}
                 <h4 style={{margin: '0'}}>Contact</h4>
                 <div className={style.data}>
                     <span className={style.infoName}>Name</span>
@@ -49,7 +55,7 @@ export const Contact = (props: DataType) => {
                     <span className={style.infoName}>City</span>
                     {!editMode.city ? <><span className={style.info}>{city}</span><span onClick={()=>setEditMode({...editMode, city: !editMode.city})} style={{cursor:'pointer'}}>✍</span></>
                         : <><input value={editData.city} className={style.input}
-                                   onChange={(e)=>setEditData({...editData, email: e.currentTarget.value})}/>
+                                   onChange={(e)=>setEditData({...editData, city: e.currentTarget.value})}/>
                             <span onClick={editDataContactHandler} style={{cursor:'pointer'}}>✅</span></>}
                 </div>
                 <div className={style.data}>

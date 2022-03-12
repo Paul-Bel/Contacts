@@ -16,7 +16,7 @@ import {Navigate, useNavigate} from 'react-router-dom'
 import {useDispatch} from "react-redux";
 import {logoutAC} from "../../Redux/reducer";
 
-const pages = ['Contacts', 'add_contact', 'Find_contact'];
+const pages = ['Contacts', 'Add_Contact'];
 const settings = ['Logout'];
 
 export const Navbar = () => {

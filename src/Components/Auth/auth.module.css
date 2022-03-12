@@ -1,8 +1,9 @@
+.state{
+    padding: 5% 0;
+}
 .auth {
-    margin: 10% auto;
+    margin: 25% auto;
     display: flex;
-
-
     border: 1px solid #282c34;
     border-radius: 5px;
     width: 400px;
