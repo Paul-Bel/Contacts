@@ -1,7 +1,7 @@
 # Приложение "Contacts" готово к использованию через GH-pages
 ## Приложение адаптировано для мобильных телефонов
 
-Ссылка для тестирования приложения [https://paul-bel.github.io/Contacts/](https://paul-bel.github.io/Contacts/).
+Ссылка на приложение [https://paul-bel.github.io/Contacts/](https://paul-bel.github.io/Contacts/)
 
 ## В приложении использованы библиотеки:
 ### `react` `axios` `react-router-dom`
