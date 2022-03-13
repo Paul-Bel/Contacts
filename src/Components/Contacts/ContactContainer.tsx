@@ -31,7 +31,7 @@ export const ContactContainer = () => {
     const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName.toLowerCase()))
     return (
         <div className={style.contactModule}>
-            <div style={{marginTop: '10px', width: '100%'}}>
+            <div className={style.firstBlock}>
                 <TextField id="outlined-basic" label="find name" variant="outlined"
                            error={false}
                            value={findContactName}

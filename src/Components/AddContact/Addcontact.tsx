@@ -14,7 +14,6 @@ import {Contact} from "../Contacts/Contact";
 
 const mapInput = ['name', "city", 'phone', 'email', 'photo']
 const reset = {name: " ", city: "", phone: " ", email: "", photo: ""}
-const redStar = <span style={{color: 'red'}}>*</span>
 export const Addcontact = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -55,8 +54,12 @@ export const Addcontact = () => {
                 <h3>Create new contact</h3>
                 {mapInput.map((name, i) => {
                     return <div className={style.addStrings} key={i + name}>
-                        {(name !== 'name' && name !== 'phone') ? ("Enter " + name)
-                            : (!!newContact[name as keyof DataType]) ? ("Enter " + name + '*') : error}
+                        <div>
+                            {(name !== 'name' && name !== 'phone') ? ("Enter " + name)
+                                : (!!newContact[name as keyof DataType]) ? (<><>{"Enter " + name}
+                                </>
+                                    <span className={style.redStar}>*</span></>) : error}
+                        </div>
                         <TextField id="outlined-basic" label={name} variant="outlined"
                                    value={newContact[name as keyof DataType]} className={style.input}
                                    onChange={(e) =>

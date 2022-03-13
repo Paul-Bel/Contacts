@@ -15,12 +15,12 @@ export const Login = () => {
         validate: (values) => {
             if (!values.email) {
                 return {
-                    email: <span style={{color: 'red'}}>'Email is required'</span>
+                    email: <span className={style.redStar}>'Email is required'</span>
                 }
             }
             if (!values.password) {
                 return {
-                    password: <span style={{color: 'red'}}>'Password is required'</span>
+                    password: <span className={style.redStar}>'Password is required'</span>
                 }
             }
         },

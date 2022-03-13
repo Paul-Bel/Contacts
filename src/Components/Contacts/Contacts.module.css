@@ -4,13 +4,18 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
-@media screen and (max-width: 700px){
+
+@media screen and (max-width: 700px) {
     .contactModule {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         flex-direction: row;
     }
+}
+
+.firstBlock {
+    width: 100%
 }
 
 .container {
@@ -45,6 +50,7 @@
     padding: 3px;
     width: 100%;
 }
+
 .data {
     display: flex;
     justify-content: flex-end;
@@ -70,6 +76,7 @@
     height: 15px;
     font-style: italic;
 }
+
 .icon {
     cursor: pointer
 }
