@@ -11,11 +11,10 @@ import {AppRootStateType} from "./Redux/store";
 
 function App() {
     const preLoader = useSelector<AppRootStateType, boolean>(store => store.data.load)
-
     return (
         <HashRouter>
-            {<Navbar/>}
-            {preLoader && <LinearProgress/>}
+            <Navbar/>
+            {preLoader ?  <LinearProgress/>: <div style={{height: '4px'}}/>}
             <div className="App">
                 <Routes>
                     <Route path={'/'} element={<ContactContainer/>}/>

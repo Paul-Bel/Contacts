@@ -32,7 +32,7 @@ export const Addcontact = () => {
         if (isLoggedIn !== "success") {
             navigate('/login')
         }
-    }, [])
+    }, [isLoggedIn])
     const sendHandler = () => {
         if (!newContact.name.trim()) {
             setNewContact({...newContact, name: '', phone: ''})
