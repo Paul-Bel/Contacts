@@ -7,16 +7,8 @@ import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
 import {useDispatch} from "react-redux";
 import {EditSpan} from "../../common/EditSpan";
 
-type ContactPropsType = {
-    nameTitle: string,
-    cityTitle: string,
-    phoneTitle: string,
-    emailTitle: string,
-}
-
 export const Contact = (props: DataType) => {
     const {id, name, city, phone, email, photo} = props
-    // const mapContact = [{name}, {city}, {phone}, {email}, {photo}]
     const mapContact = [ 'Name', "City", 'Phone', 'Email']
     const dispatch = useDispatch()
     let text = <div>редактировать <p/>
@@ -31,6 +23,9 @@ export const Contact = (props: DataType) => {
         dispatch(deleteContactsTC(id))
     }
     const editDataContactHandler = () => {
+        let data = JSON.stringify(editData)
+        let dataProps = JSON.stringify(props)
+        data !== dataProps &&
         dispatch(editContactsTC(editData))
         setEditMode(true)
     }
@@ -55,7 +50,7 @@ export const Contact = (props: DataType) => {
                 <h4 style={{margin: '0'}}>Contact</h4>
                 {mapContact.map((data, i) => {
                     return <EditSpan key={i+data} value={editData[data.toLowerCase() as keyof DataType]}
-                                     name={data} callBack={changeDataContact} setCgange={editDataContactHandler}/>
+                                     name={data} callBack={changeDataContact} setChange={editDataContactHandler}/>
                 })}
             </div>
         </div>

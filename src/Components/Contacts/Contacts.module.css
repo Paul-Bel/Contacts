@@ -3,9 +3,9 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
-    padding-top: 60px;
+    padding-top: 50px;
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 700px){
     .contactModule {
         display: flex;
         justify-content: center;
@@ -30,7 +30,6 @@
     position: absolute;
     top: 1px;
     left: 10px;
-
 }
 
 .photo {
@@ -70,7 +69,6 @@
 .input {
     width: 128px;
     height: 15px;
-    marginRight: 1px;
     font-style: italic;
 }
 .icon {

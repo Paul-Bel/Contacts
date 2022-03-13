@@ -53,18 +53,17 @@ export const Addcontact = () => {
                 <h3>Create new contact</h3>
                 <div className={style.addStrings}> {!!newContact.name ? "*Enter name" : error}
                     <TextField id="outlined-basic" label="*name" variant="outlined"
-                               error={!newContact.name}
-                               value={newContact.name}
+                               error={!newContact.name} value={newContact.name} className={style.input}
                                onChange={(e) => setNewContact({...newContact, name: e.currentTarget.value})}/>
                 </div>
                 <div className={style.addStrings}> Enter city
                     <TextField id="outlined-basic" label="city" variant="outlined"
-                               value={newContact.city}
+                               value={newContact.city} className={style.input}
                                onChange={(e) => setNewContact({...newContact, city: e.currentTarget.value})}/>
                 </div>
                 <div className={style.addStrings}> {!!newContact.phone ? "*Enter phone" : error}
                     <TextField id="outlined-basic" label="*(960)xxxxxxx" variant="outlined"
-                               value={newContact.phone} error={!newContact.phone}
+                               value={newContact.phone} error={!newContact.phone} className={style.input}
                                onChange={(e) => setNewContact({
                                    ...newContact,
                                    phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
@@ -72,11 +71,11 @@ export const Addcontact = () => {
                 </div>
                 <div className={style.addStrings}> Enter email
                     <TextField id="outlined-basic" label="e-mail" variant="outlined"
-                               value={newContact.email}
+                               value={newContact.email} className={style.input}
                                onChange={(e) => setNewContact({...newContact, email: e.currentTarget.value})}/></div>
                 <div className={style.addStrings}> Add url photo
                     <TextField id="outlined-basic" label="https://.....jpg" variant="outlined"
-                               value={newContact.photo}
+                               value={newContact.photo} className={style.input}
                                onChange={(e) => setNewContact({...newContact, photo: e.currentTarget.value})}/>
                 </div>
                 <Stack direction="row" spacing={5} justifyContent={"center"}>

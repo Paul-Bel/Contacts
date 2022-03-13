@@ -21,9 +21,6 @@ import {Alert} from "@mui/material";
 let pages = ['Contacts', 'Add_Contact'];
 let settings = ['Logout'];
 
-class ChangeEvent<T> {
-}
-
 export const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState<null|HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
@@ -34,11 +31,10 @@ export const Navbar = () => {
     const handleOpenNavMenu = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event: MouseEvent<HTMLButtonElement>) => {
+    const handleOpenUserMenu = () => {
         sessionStorage.setItem('auth', JSON.stringify(false))
         dispatch(logoutAC());
         navigate('/login')
-        // setAnchorElUser(event.currentTarget);
     };
     const handleCloseNavMenu = (page: string) => {
         setAnchorElNav(null);
@@ -64,9 +60,7 @@ export const Navbar = () => {
                         component="div"
                         sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
                     >
-
                     </Typography>
-
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
                             size="large"
@@ -116,12 +110,9 @@ export const Navbar = () => {
                                 key={page}
                                 onClick={() => handleCloseNavMenu(page)}
                                 sx={{my: 2, color: 'white', display: 'block'}}
-                            >
-                                {page}
-                            </Button>
+                            >{page}</Button>
                         ))}
                     </Box>
-
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>

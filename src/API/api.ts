@@ -25,5 +25,4 @@ export const contactsAPI = {
     findContacts(id: string | number) {
         return instance.delete(`users?name=${id}`)
     },
-
 }

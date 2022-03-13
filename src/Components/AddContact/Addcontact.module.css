@@ -1,15 +1,18 @@
 .addContactContainer {
     min-height: 100vh;
-    padding-top: 100px;
+    padding-top: 50px;
     background-color: #f3ece6;
 }
 .header {
     border: 1px solid black;
     border-radius: 5px;
-    width: 380px;
+    width: 330px;
     margin: 10px auto;
     padding: 5px;
-    /*background-color: rgba(116, 120, 122, 0.24);*/
+}
+.input{
+    max-width: 180px;
+    right: 35px;
 }
 .addStrings {
     width: 350px;

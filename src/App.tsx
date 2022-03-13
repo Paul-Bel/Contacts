@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Login} from "./Components/Login/Login";
-import {HashRouter, BrowserRouter, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import {ContactContainer} from "./Components/Contacts/ContactContainer";
 import {useSelector} from "react-redux";
 import {Navbar} from "./Components/Navbar/Navbar";

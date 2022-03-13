@@ -21,12 +21,11 @@ export const reducer = (state: InitialStateType = initialState, action: ActionsT
         case 'CREATE_CONTACT':
             return {...state, contacts: [...state.contacts, action.contacts], successCreate: action.successCreate};
         case 'DELETE_CONTACT':
-            return {...state, contacts: state.contacts.filter(us => us.id !== action.id)};
+            return {...state, contacts: state.contacts.filter(us => us.id !== action.id), successCreate: false};
         case 'EDIT_CONTACT':
             return {...state, contacts: state.contacts.map(us => us.id === action.contacts.id ? action.contacts : us)};
         case 'Find_CONTACT':
-            return {...state, contacts: state.contacts.filter(us => us.name.includes(action.name))};
-
+            return {...state, contacts: state.contacts.filter(us => us.name.includes(action.name))}
         default:
             return state
     }
@@ -65,7 +64,6 @@ export const loginTC = (email: string, password: string) => (dispatch: Dispatch<
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
-
 export const setContactsTC = () => (dispatch: Dispatch<ActionsType>) => {
     dispatch(preloadAC(true))
     contactsAPI.getContacts()
@@ -136,5 +134,3 @@ type InitialStateType = {
     successCreate: boolean
     contacts: Array<DataType>
 }
-//
-// // type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>

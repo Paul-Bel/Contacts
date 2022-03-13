@@ -28,13 +28,11 @@ export const ContactContainer = () => {
             sessionStorage.setItem('auth', JSON.stringify(true))
         }
     }, [])
-
     const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName.toLowerCase()))
-
     return (
         <div className={style.contactModule}>
             <div style={{marginTop: '10px', width: '100%'}}>
-                <TextField id="outlined-basic" label="type name" variant="outlined"
+                <TextField id="outlined-basic" label="find name" variant="outlined"
                            error={false}
                            value={findContactName}
                            onChange={(e) =>
@@ -49,7 +47,6 @@ export const ContactContainer = () => {
             {contacts.map((us, i) => <Contact
                 key={us.id} id={us.id} name={us.name} city={us.city}
                 phone={us.phone} email={us.email} photo={us.photo}
-
             />)}
         </div>
     )
