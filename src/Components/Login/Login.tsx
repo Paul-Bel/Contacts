@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from "@mui/material";
+import React from "react";
+import {Button, FormControl, FormGroup, FormLabel, Grid, TextField} from "@mui/material";
 import {useFormik} from "formik";
 import style from "./Login.module.css"
 import {useDispatch, useSelector} from "react-redux";

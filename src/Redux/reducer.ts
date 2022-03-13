@@ -1,6 +1,5 @@
 import {Dispatch} from 'redux'
 import {contactsAPI} from "../API/api";
-
 const initialState: InitialStateType = {
     isLoggedIn: 'not authorized',
     load: false,
@@ -61,6 +60,7 @@ export const loginTC = (email: string, password: string) => (dispatch: Dispatch<
             }
         })
         .catch((error) => {
+            console.log(error)
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
@@ -73,6 +73,7 @@ export const setContactsTC = () => (dispatch: Dispatch<ActionsType>) => {
             }
         })
         .catch((error) => {
+            console.log(error)
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
@@ -85,6 +86,7 @@ export const createContactsTC = (newUser: DataType) => (dispatch: Dispatch<Actio
             }
         })
         .catch((error) => {
+            console.log(error)
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
@@ -97,6 +99,7 @@ export const editContactsTC = (editUser: DataType) => (dispatch: Dispatch<Action
             }
         })
         .catch((error) => {
+            console.log(error)
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
@@ -109,6 +112,7 @@ export const deleteContactsTC = (id: number | string) => (dispatch: Dispatch<Act
             }
         })
         .catch((error) => {
+            console.log(error)
             alert('try later')
         }).finally(() => dispatch(preloadAC(false)))
 }
