@@ -25,9 +25,10 @@ export const EditSpan = (props: EditSpanPropsType) => {
                         className={style.icon}>✍</span></>
                 : <><input value={props.value} className={style.input}
                            onChange={(e) =>
-                               props.name !== 'Phone'
+                               (props.name !== 'Phone' && e.currentTarget.value.length < 15)
                                ? props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())
-                               : props.callBack(isFinite(+e.currentTarget.value) ? e.currentTarget.value
+                               : e.currentTarget.value.length < 15 && props.callBack(isFinite(+e.currentTarget.value)
+                                       ? e.currentTarget.value
                                        : props.value, props.name.toLocaleLowerCase())
 
                            }/>
