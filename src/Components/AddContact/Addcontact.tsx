@@ -63,9 +63,9 @@ export const Addcontact = () => {
                         <TextField id="outlined-basic" label={name} variant="outlined"
                                    value={newContact[name as keyof DataType]} className={style.input}
                                    onChange={(e) =>
-                                       name !== 'phone'
+                                       name !== 'phone' && e.currentTarget.value.length < 15
                                            ? setNewContact({...newContact, [name]: e.currentTarget.value})
-                                           : setNewContact({
+                                           : e.currentTarget.value.length < 15 &&setNewContact({
                                                ...newContact,
                                                phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
                                            })}
