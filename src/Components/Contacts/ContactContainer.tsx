@@ -27,7 +27,7 @@ export const ContactContainer = () => {
         if (isLoggedIn === 'success') {
             sessionStorage.setItem('auth', JSON.stringify(true))
         }
-    }, [])
+    }, [state])
     const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName.toLowerCase()))
     return (
         <div className={style.contactModule}>
@@ -44,7 +44,7 @@ export const ContactContainer = () => {
                     clean
                 </Button>
             </div>
-            {contacts.map((us, i) => <Contact
+            {contacts.map((us) => <Contact
                 key={us.id} id={us.id} name={us.name} city={us.city}
                 phone={us.phone} email={us.email} photo={us.photo}
             />)}

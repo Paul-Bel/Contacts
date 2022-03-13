@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e7de0fb-c621-4c2d-844a-f8a208a4b45a" name="Changes" comment="fixed delete contact">
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-    </list>
+    <list default="true" id="3e7de0fb-c621-4c2d-844a-f8a208a4b45a" name="Changes" comment="fixed delete contact" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +59,7 @@
       <updated>1646949424607</updated>
       <workItem from="1646949425788" duration="57135000" />
       <workItem from="1647069833839" duration="26029000" />
-      <workItem from="1647161143370" duration="4896000" />
+      <workItem from="1647161143370" duration="5218000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1646950283891</created>
@@ -133,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647165605110</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixed delete contact">
+      <created>1647166388869</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647166388869</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
