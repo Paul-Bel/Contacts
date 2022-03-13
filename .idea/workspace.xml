@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e7de0fb-c621-4c2d-844a-f8a208a4b45a" name="Changes" comment="function is ready">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/AddContact/Addcontact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/Contact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/ContactContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Contacts/Contacts.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Contacts/Contacts.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Login/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/EditSpan.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/EditSpan.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Error.tsx" beforeDir="false" />
-    </list>
+    <list default="true" id="3e7de0fb-c621-4c2d-844a-f8a208a4b45a" name="Changes" comment="fixed delete contact" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +59,7 @@
       <updated>1646949424607</updated>
       <workItem from="1646949425788" duration="57135000" />
       <workItem from="1647069833839" duration="26029000" />
-      <workItem from="1647161143370" duration="3812000" />
+      <workItem from="1647161143370" duration="4153000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1646950283891</created>
@@ -124,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647100622479</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixed delete contact">
+      <created>1647165270115</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1647165270115</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +139,7 @@
     <MESSAGE value="added auth, post, get" />
     <MESSAGE value="added edit profile" />
     <MESSAGE value="function is ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="function is ready" />
+    <MESSAGE value="fixed delete contact" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed delete contact" />
   </component>
 </project>
