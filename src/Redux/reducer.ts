@@ -52,7 +52,6 @@ export const loginTC = (email: string, password: string) => (dispatch: Dispatch<
     dispatch(preloadAC(true))
     contactsAPI.authMe()
         .then(res => {
-
             if (res.status === 200 && res.data[0].email === email && res.data[0].password === password) {
                 dispatch(authMeAC('success'))
             } else {

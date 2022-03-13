@@ -16,7 +16,7 @@ export const EditSpan = (props: EditSpanPropsType) => {
     }
     return (
         <div className={style.data}>
-            <span className={style.infoName} >{props.name}</span>
+            <span className={style.infoName}>{props.name}</span>
             {!editMode ? <><span className={style.info}
                                  onDoubleClick={() => setEditMode(!editMode)}>{props.value}
             </span>
@@ -25,7 +25,12 @@ export const EditSpan = (props: EditSpanPropsType) => {
                         className={style.icon}>✍</span></>
                 : <><input value={props.value} className={style.input}
                            onChange={(e) =>
-                               props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())}/>
+                               props.name !== 'Phone'
+                               ? props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())
+                               : props.callBack(isFinite(+e.currentTarget.value) ? e.currentTarget.value
+                                       : props.value, props.name.toLocaleLowerCase())
+
+                           }/>
                     <span onClick={onClickChange} className={style.icon}>✅</span></>}
         </div>
     )

@@ -7,12 +7,10 @@ import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
 import {useDispatch} from "react-redux";
 import {EditSpan} from "../../common/EditSpan";
 
+const mapContact = ['Name', "City", 'Phone', 'Email']
 export const Contact = (props: DataType) => {
     const {id, name, city, phone, email, photo} = props
-    const mapContact = [ 'Name', "City", 'Phone', 'Email']
     const dispatch = useDispatch()
-    let text = <div>редактировать <p/>
-        наличие функции поиска.'"</div>
     const [forDelete, setForDelete] = useState(true)
     const [editData, setEditData] = useState<DataType>({id, name, city, phone, email, photo})
     const [editMode, setEditMode] = useState(true)
@@ -41,15 +39,14 @@ export const Contact = (props: DataType) => {
                             <DoNotTouchIcon fontSize={"large"} style={{marginLeft: "10px"}}/></span></>}
             </div>
             {editMode ? <div className={style.photo} style={{backgroundImage: `url(${photo})`}}
-                                    onClick={() => setEditMode(false)}/>
+                             onClick={() => setEditMode(false)}/>
                 : <><input value={editData.photo} style={{width: "80px"}} autoFocus={true}
                            onChange={(e) => setEditData({...editData, photo: e.currentTarget.value})}/>
                     <span onClick={editDataContactHandler} className={style.icon}>✅</span></>}
             <div className={style.infoContact}>
-                {/*<div className={style.dataContainer}> </div>*/}
                 <h4 style={{margin: '0'}}>Contact</h4>
                 {mapContact.map((data, i) => {
-                    return <EditSpan key={i+data} value={editData[data.toLowerCase() as keyof DataType]}
+                    return <EditSpan key={i + data} value={editData[data.toLowerCase() as keyof DataType]}
                                      name={data} callBack={changeDataContact} setChange={editDataContactHandler}/>
                 })}
             </div>

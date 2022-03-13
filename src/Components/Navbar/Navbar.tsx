@@ -22,12 +22,14 @@ let pages = ['Contacts', 'Add_Contact'];
 let settings = ['Logout'];
 
 export const Navbar = () => {
-    const [anchorElNav, setAnchorElNav] = useState<null|HTMLElement>(null);
+    const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
     const dispatch = useDispatch()
     const navigate = useNavigate();
-
+    if (isLoggedIn !== 'success') {
+        return <></>
+    }
     const handleOpenNavMenu = (event: MouseEvent<HTMLButtonElement>) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -47,9 +49,7 @@ export const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    if(isLoggedIn !== 'success'){
-    return <></>
-    }
+
     return (
         <AppBar position="static" color={'secondary'}>
             <Container maxWidth="xl">
@@ -117,7 +117,7 @@ export const Navbar = () => {
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
                                 <Avatar alt="Remy Sharp"
-                                        src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_372PEtCtY5HCwV0mpJWwI5x_TFb_ykr9Sg&usqp=CAU'}/>
+                                        src={'https://e7.pngegg.com/pngimages/335/839/png-clipart-computer-icons-exit-miscellaneous-purple.png'}/>
                             </IconButton>
                         </Tooltip>
                         <Menu

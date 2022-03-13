@@ -12,27 +12,27 @@ import {AppRootStateType} from "../../Redux/store";
 import {authMeAC, AuthType, createContactsTC, DataType} from "../../Redux/reducer";
 import {Contact} from "../Contacts/Contact";
 
-
+const mapInput = ['name', "city", 'phone', 'email', 'photo']
+const reset = {name: " ", city: "", phone: " ", email: "", photo: ""}
+const redStar = <span style={{color: 'red'}}>*</span>
 export const Addcontact = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const lastContact = useSelector<AppRootStateType, DataType>(store =>
         store.data.contacts[store.data.contacts.length - 1])
-    const resrt = {name: " ", city: "", phone: " ", email: "", photo: ""}
     const error = <span style={{color: 'red'}}>Fill in the field</span>
     const isLoggedIn = useSelector<AppRootStateType, AuthType>(state => state.data.isLoggedIn)
     const successCreate = useSelector<AppRootStateType, boolean>(state => state.data.successCreate)
     const load = useSelector<AppRootStateType, boolean>(state => state.data.load)
-    const [newContact, setNewContact] = useState<DataType>({id: v1(), ...resrt})
+    const [newContact, setNewContact] = useState<DataType>({id: v1(), ...reset})
     useEffect(() => {
         let checkAuth = sessionStorage.getItem('auth')
         if (checkAuth === 'true') {
             dispatch(authMeAC('success'))
-        }
-        if (isLoggedIn !== "success") {
+        } else {
             navigate('/login')
         }
-    }, [isLoggedIn])
+    }, [])
     const sendHandler = () => {
         if (!newContact.name.trim()) {
             setNewContact({...newContact, name: '', phone: ''})
@@ -44,43 +44,34 @@ export const Addcontact = () => {
             return
         }
         dispatch(createContactsTC(newContact))
-        setNewContact({id: v1(), ...resrt})
+        setNewContact({id: v1(), ...reset})
     }
-
+    if (isLoggedIn !== "success") {
+        navigate('/login')
+    }
     return (
         <div className={style.addContactContainer}>
             <div className={style.header}>
                 <h3>Create new contact</h3>
-                <div className={style.addStrings}> {!!newContact.name ? "*Enter name" : error}
-                    <TextField id="outlined-basic" label="*name" variant="outlined"
-                               error={!newContact.name} value={newContact.name} className={style.input}
-                               onChange={(e) => setNewContact({...newContact, name: e.currentTarget.value})}/>
-                </div>
-                <div className={style.addStrings}> Enter city
-                    <TextField id="outlined-basic" label="city" variant="outlined"
-                               value={newContact.city} className={style.input}
-                               onChange={(e) => setNewContact({...newContact, city: e.currentTarget.value})}/>
-                </div>
-                <div className={style.addStrings}> {!!newContact.phone ? "*Enter phone" : error}
-                    <TextField id="outlined-basic" label="*(960)xxxxxxx" variant="outlined"
-                               value={newContact.phone} error={!newContact.phone} className={style.input}
-                               onChange={(e) => setNewContact({
-                                   ...newContact,
-                                   phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
-                               })}/>
-                </div>
-                <div className={style.addStrings}> Enter email
-                    <TextField id="outlined-basic" label="e-mail" variant="outlined"
-                               value={newContact.email} className={style.input}
-                               onChange={(e) => setNewContact({...newContact, email: e.currentTarget.value})}/></div>
-                <div className={style.addStrings}> Add url photo
-                    <TextField id="outlined-basic" label="https://.....jpg" variant="outlined"
-                               value={newContact.photo} className={style.input}
-                               onChange={(e) => setNewContact({...newContact, photo: e.currentTarget.value})}/>
-                </div>
+                {mapInput.map((name, i) => {
+                    return <div className={style.addStrings} key={i + name}>
+                        {(name !== 'name' && name !== 'phone') ? ("Enter " + name)
+                            : (!!newContact[name as keyof DataType]) ? ("Enter " + name + '*') : error}
+                        <TextField id="outlined-basic" label={name} variant="outlined"
+                                   value={newContact[name as keyof DataType]} className={style.input}
+                                   onChange={(e) =>
+                                       name !== 'phone'
+                                           ? setNewContact({...newContact, [name]: e.currentTarget.value})
+                                           : setNewContact({
+                                               ...newContact,
+                                               phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
+                                           })}
+                        />
+                    </div>
+                })}
                 <Stack direction="row" spacing={5} justifyContent={"center"}>
                     <Button variant="outlined" color={'error'} startIcon={<DeleteIcon/>}
-                            onClick={() => (setNewContact({id: v1(), ...resrt}))} disabled={load}>
+                            onClick={() => (setNewContact({id: v1(), ...reset}))} disabled={load}>
                         Clean
                     </Button>
                     <Button variant="contained" endIcon={<SendIcon/>} onClick={sendHandler}
