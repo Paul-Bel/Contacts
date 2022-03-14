@@ -24,7 +24,7 @@ export const Contact = (props: DataType) => {
         let data = JSON.stringify(editData)
         let dataProps = JSON.stringify(props)
         data !== dataProps &&
-        dispatch(editContactsTC(editData))
+        dispatch(editContactsTC(editData.photo.length < 30 ? {...editData, photo: props.photo} : editData))
         setEditMode(true)
     }
     return (

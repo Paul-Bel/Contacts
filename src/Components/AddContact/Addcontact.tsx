@@ -43,7 +43,7 @@ export const Addcontact = () => {
             setNewContact({...newContact, phone: ''})
             return
         }
-        dispatch(createContactsTC(newContact.photo.length ===0 ? {...newContact, photo: avatar} : newContact))
+        dispatch(createContactsTC(newContact.photo.length < 30 ? {...newContact, photo: avatar} : newContact))
         setNewContact({id: v1(), ...reset})
     }
     if (isLoggedIn !== "success") {
