@@ -7,6 +7,7 @@ import DoNotTouchIcon from '@mui/icons-material/DoNotTouch';
 import {useDispatch} from "react-redux";
 import {EditSpan} from "../../common/EditSpan";
 
+const avatar = 'https://www.info-otzyv.com/images/company_default.png'
 const mapContact = ['Name', "City", 'Phone', 'Email']
 export const Contact = (props: DataType) => {
     const {id, name, city, phone, email, photo} = props
@@ -24,7 +25,7 @@ export const Contact = (props: DataType) => {
         let data = JSON.stringify(editData)
         let dataProps = JSON.stringify(props)
         data !== dataProps &&
-        dispatch(editContactsTC(editData.photo.length < 30 ? {...editData, photo: props.photo} : editData))
+        dispatch(editContactsTC(editData.photo.length < 30 ? {...editData, photo: avatar} : editData))
         setEditMode(true)
     }
     return (
