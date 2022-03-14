@@ -12,6 +12,7 @@ import {AppRootStateType} from "../../Redux/store";
 import {authMeAC, AuthType, createContactsTC, DataType} from "../../Redux/reducer";
 import {Contact} from "../Contacts/Contact";
 
+const avatar = 'https://www.info-otzyv.com/images/company_default.png'
 const mapInput = ['name', "city", 'phone', 'email', 'photo']
 const reset = {name: " ", city: "", phone: " ", email: "", photo: ""}
 export const Addcontact = () => {
@@ -42,7 +43,7 @@ export const Addcontact = () => {
             setNewContact({...newContact, phone: ''})
             return
         }
-        dispatch(createContactsTC(newContact))
+        dispatch(createContactsTC(newContact.photo.length ===0 ? {...newContact, photo: avatar} : newContact))
         setNewContact({id: v1(), ...reset})
     }
     if (isLoggedIn !== "success") {
@@ -63,13 +64,15 @@ export const Addcontact = () => {
                         <TextField id="outlined-basic" label={name} variant="outlined"
                                    value={newContact[name as keyof DataType]} className={style.input}
                                    onChange={(e) =>
-                                       name !== 'phone' && e.currentTarget.value.length < 15
-                                           ? setNewContact({...newContact, [name]: e.currentTarget.value})
-                                           : e.currentTarget.value.length < 15 &&setNewContact({
+                                       name === 'phone' && e.currentTarget.value.length < 15
+                                           ? setNewContact({
                                                ...newContact,
-                                               phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone
-                                           })}
-                        />
+                                               phone: isFinite(+e.currentTarget.value) ? e.currentTarget.value : newContact.phone})
+                                           : name === 'photo'
+                                           ? setNewContact({...newContact, [name]: e.currentTarget.value})
+                                           : e.currentTarget.value.length < 15 &&
+                                               setNewContact({...newContact, [name]: e.currentTarget.value})
+                                          }/>
                     </div>
                 })}
                 <Stack direction="row" spacing={5} justifyContent={"center"}>

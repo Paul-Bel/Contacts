@@ -33,7 +33,7 @@ export const Contact = (props: DataType) => {
                 {forDelete
                     ? <span className={style.icon} onClick={() => setForDelete(false)}>
                         <DeleteForeverIcon fontSize="large" color={"primary"}/></span>
-                    : <><span onClick={deleteContact}><DeleteSweepIcon fontSize={"large"}/></span>
+                    : <><span onClick={deleteContact} className={style.icon}><DeleteSweepIcon fontSize={"large"}/></span>
                         <span className={style.icon}
                               onClick={() => setForDelete(true)}>
                             <DoNotTouchIcon fontSize={"large"} style={{marginLeft: "10px"}}/></span></>}

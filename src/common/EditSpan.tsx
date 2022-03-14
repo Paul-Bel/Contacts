@@ -26,7 +26,7 @@ export const EditSpan = (props: EditSpanPropsType) => {
                 : <><input value={props.value} className={style.input}
                            autoFocus={true}
                            onChange={(e) =>
-                               (props.name !== 'Phone' && e.currentTarget.value.length < 15)
+                               props.name !== 'Phone' && e.currentTarget.value.length < 15
                                ? props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())
                                : e.currentTarget.value.length < 15 && props.callBack(isFinite(+e.currentTarget.value)
                                        ? e.currentTarget.value
