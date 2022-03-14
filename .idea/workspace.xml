@@ -60,6 +60,7 @@
       <workItem from="1646949425788" duration="57135000" />
       <workItem from="1647069833839" duration="26029000" />
       <workItem from="1647161143370" duration="24819000" />
+      <workItem from="1647239642231" duration="620000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1646950283891</created>
@@ -264,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647203614186</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="fixed delete contact">
+      <created>1647241696623</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1647241696623</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
