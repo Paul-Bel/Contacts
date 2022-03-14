@@ -24,6 +24,7 @@ export const EditSpan = (props: EditSpanPropsType) => {
                         onClick={() => setEditMode(!editMode)}
                         className={style.icon}>✍</span></>
                 : <><input value={props.value} className={style.input}
+                           autoFocus={true}
                            onChange={(e) =>
                                (props.name !== 'Phone' && e.currentTarget.value.length < 15)
                                ? props.callBack(e.currentTarget.value, props.name.toLocaleLowerCase())
