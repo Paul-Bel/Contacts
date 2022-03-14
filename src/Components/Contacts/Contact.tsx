@@ -41,7 +41,7 @@ export const Contact = (props: DataType) => {
             </div>
             {editMode ? <div className={style.photo} style={{backgroundImage: `url(${photo})`}}
                              onClick={() => setEditMode(false)}/>
-                : <><input value={editData.photo} style={{width: "80px"}} autoFocus={true}
+                : <><input value={editData.photo} style={{width: "47px", height: '30px', marginLeft: '5px'}} autoFocus={true}
                            onChange={(e) => setEditData({...editData, photo: e.currentTarget.value})}/>
                     <span onClick={editDataContactHandler} className={style.icon}>✅</span></>}
             <div className={style.infoContact}>
