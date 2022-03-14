@@ -23,11 +23,11 @@ export const ContactContainer = () => {
         if (isLoggedIn !== "success") {
             navigate('/login')
         }
-        dispatch(setContactsTC())
         if (isLoggedIn === 'success') {
             sessionStorage.setItem('auth', JSON.stringify(true))
+            dispatch(setContactsTC())
         }
-    }, [isLoggedIn])
+    }, [])
     const contacts = state.filter(us => us.name.toLowerCase().includes(findContactName.toLowerCase()))
     return (
         <div className={style.contactModule}>
